@@ -4,9 +4,21 @@
     "short_name": "gmailjsnode",
     "version": "1.1",
     "author": "Jostein Kjønigsen <jostein@kjonigsen.net>",
-
     "description": "A minimal extension which demonstrates how to create a extension with Gmail.JS and NodeJS-based bundling.",
-
+    "action": {
+        "default_title": "Open Gmail Sidepanel"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "sidePanel"
+    ],
+    "background": {
+        "service_worker": "dist/background.js"
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
+    },
     "content_scripts": [
         {
             "matches": [ "*://mail.google.com/*" ],
@@ -16,7 +28,6 @@
             "run_at": "document_start"
         }
     ],
-
     "web_accessible_resources": [{
         "resources": [
             "dist/gmailJsLoader.js",
